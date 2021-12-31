@@ -6,12 +6,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import entidades.Produto;
 import services.ServicoCalculo;
 
 public class Programa {
 
 	public static void main(String[] args) {
-		List<Integer> list = new ArrayList<>();
+		List<Produto> list = new ArrayList<>();
 
 		String path = "C:\\circular\\in.txt";
 
@@ -19,12 +20,14 @@ public class Programa {
 
 			String line = br.readLine();
 			while (line != null) {
-				list.add(Integer.parseInt(line));
+				
+				String[] campo = line.split(",");
+				list.add(new Produto(campo[0], Double.parseDouble(campo[1])));
 				line = br.readLine();
 			}
 			
-			Integer x = ServicoCalculo.max(list);
-			System.out.println("Max:");
+			Produto x = ServicoCalculo.max(list);
+			System.out.println("Mostrar o maior preço:");
 			System.out.println(x);
 
 		} catch (IOException e) {

@@ -1,6 +1,6 @@
 package entidades;
 
-public class Produto {
+public class Produto implements Comparable<Produto>{
 	private String name;
 	private Double price;
 	
@@ -28,6 +28,12 @@ public class Produto {
 	@Override
 	public String toString() {
 		return name + ", " + String.format("%.2f", price);
+	}
+
+	@Override
+	public int compareTo(Produto outro) {
+		
+		return price.compareTo(outro.getPrice());
 	}
 
 }
